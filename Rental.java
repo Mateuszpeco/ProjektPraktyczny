@@ -11,9 +11,9 @@ public class Rental {
     @Column
     private Integer rental_id;
     @Column(name = "car_id")
-    private Integer carId;
+    private Integer idCar;
     @Column(name = "customer_id")
-    private Integer customerId;
+    private Integer idCustomer;
     @Column(name = "loan_date")
     private LocalDate loanDate;
     @Column(name = "return_date")
@@ -27,11 +27,11 @@ public class Rental {
 
     @OneToOne(fetch = FetchType.EAGER, cascade = {CascadeType.ALL})
     @JoinColumn(name = "car_id")
-    private Car carId;
+    private Car car;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "customer_id")
-    private Customers customerId;
+    private Customers customer;
 
     public Rental() {
     }
@@ -44,28 +44,20 @@ public class Rental {
         this.rental_id = rental_id;
     }
 
-    public Integer getCarId() {
-        return carId;
+    public Integer getIdCar() {
+        return idCar;
     }
 
-    public void setCarId(Car carId) {
-        this.carId = carId;
+    public void setIdCar(Integer idCar) {
+        this.idCar = idCar;
     }
 
-    public void setCarId(Integer carId) {
-        this.carId = carId;
+    public Integer getIdCustomer() {
+        return idCustomer;
     }
 
-    public Integer getCustomerId() {
-        return customerId;
-    }
-
-    public void setCustomerId(Customers customerId) {
-        this.customerId = customerId;
-    }
-
-    public void setCustomerId(Integer customerId) {
-        this.customerId = customerId;
+    public void setIdCustomer(Integer idCustomer) {
+        this.idCustomer = idCustomer;
     }
 
     public LocalDate getLoanDate() {
@@ -106,5 +98,21 @@ public class Rental {
 
     public void setPenaltyAmount(BigDecimal penaltyAmount) {
         this.penaltyAmount = penaltyAmount;
+    }
+
+    public Car getCar() {
+        return car;
+    }
+
+    public void setCar(Car car) {
+        this.car = car;
+    }
+
+    public Customers getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(Customers customer) {
+        this.customer = customer;
     }
 }
