@@ -9,7 +9,7 @@ public class Customers {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column
-    private Integer customer_id;
+    private Integer customerId;
     @Column(name = "first_name")
     private String firstName;
     @Column(name = "last_name")
@@ -22,11 +22,11 @@ public class Customers {
     }
 
     public Integer getCustomer_id() {
-        return customer_id;
+        return customerId;
     }
 
     public void setCustomer_id(Integer customer_id) {
-        this.customer_id = customer_id;
+        this.customerId = customer_id;
     }
 
     public String getFirstName() {
