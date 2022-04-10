@@ -1,3 +1,8 @@
+package ProjektPraktyczny;
+
+import ProjektPraktyczny.Car;
+import ProjektPraktyczny.Customers;
+
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDate;
