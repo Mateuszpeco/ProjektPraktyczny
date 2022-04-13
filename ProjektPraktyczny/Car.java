@@ -25,10 +25,19 @@ public class Car {
     @Column(name = "cost")
     private BigDecimal cost;
 
-    @OneToOne(mappedBy = "cars", fetch = FetchType.EAGER)
-    private Rental rental;
+//    @OneToOne(mappedBy = "car", fetch = FetchType.EAGER)
+//    private Rental rental;
 
     public Car() {
+    }
+
+    public Car(String brand, String model, String color, String registrationNumber, Condition condition, BigDecimal cost) {
+        this.brand = brand;
+        this.model = model;
+        this.color = color;
+        this.registrationNumber = registrationNumber;
+        this.condition = condition;
+        this.cost = cost;
     }
 
     public Integer getCarId() {
@@ -87,11 +96,26 @@ public class Car {
         this.cost = cost;
     }
 
-    public Rental getRental() {
-        return rental;
-    }
+//    public Rental getRental() {
+//        return rental;
+//    }
+//
+//    public void setRental(Rental rental) {
+//        this.rental = rental;
+//    }
 
-    public void setRental(Rental rental) {
-        this.rental = rental;
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder("Car{");
+        sb.append("carId=").append(carId);
+        sb.append(", brand='").append(brand).append('\'');
+        sb.append(", model='").append(model).append('\'');
+        sb.append(", color='").append(color).append('\'');
+        sb.append(", registrationNumber='").append(registrationNumber).append('\'');
+        sb.append(", condition=").append(condition);
+        sb.append(", cost=").append(cost);
+//        sb.append(", rental=").append(rental);
+        sb.append('}');
+        return sb.toString();
     }
 }

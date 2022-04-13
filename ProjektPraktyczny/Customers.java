@@ -17,10 +17,15 @@ public class Customers {
     @Column(name = "last_name")
     private String lastName;
 
-    @OneToOne(fetch = FetchType.LAZY, mappedBy = "customers", orphanRemoval = true)
-    private Set<Rental> rentals = new HashSet<>();
+//    @OneToOne(fetch = FetchType.EAGER, mappedBy = "customers", orphanRemoval = true)
+//    private Set<Rental> rentals = new HashSet<>();
 
     public Customers() {
+    }
+
+    public Customers(String firstName, String lastName) {
+        this.firstName = firstName;
+        this.lastName = lastName;
     }
 
     public Integer getCustomer_id() {
@@ -47,11 +52,22 @@ public class Customers {
         this.lastName = lastName;
     }
 
-    public Set<Rental> getRentals() {
-        return rentals;
-    }
+//    public Set<Rental> getRentals() {
+//        return rentals;
+//    }
+//
+//    public void setRentals(Set<Rental> rentals) {
+//        this.rentals = rentals;
+//    }
 
-    public void setRentals(Set<Rental> rentals) {
-        this.rentals = rentals;
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder("Customers{");
+        sb.append("customerId=").append(customerId);
+        sb.append(", firstName='").append(firstName).append('\'');
+        sb.append(", lastName='").append(lastName).append('\'');
+//        sb.append(", rentals=").append(rentals);
+        sb.append('}');
+        return sb.toString();
     }
 }
