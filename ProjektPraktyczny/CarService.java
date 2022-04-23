@@ -20,14 +20,14 @@ public class CarService {
         carDao.closeCurrentSessionwithTransaction();
     }
 
-    public Car findById(String id) {
+    public Car findById(Integer id) {
         carDao.openCurrentSession();
         Car car = carDao.findById(id);
         carDao.closeCurrentSession();
         return car;
     }
 
-    public void delete(String id) {
+    public void delete(Integer id) {
         carDao.openCurrentSessionwithTransaction();
         Car car = carDao.findById(id);
         carDao.delete(car);

@@ -20,14 +20,14 @@ public class CustomerService {
         customersDao.closeCurrentSessionwithTransaction();
     }
 
-    public Customers findById(String id) {
+    public Customers findById(Integer id) {
         customersDao.openCurrentSession();
         Customers customers = customersDao.findById(id);
         customersDao.closeCurrentSession();
         return customers;
     }
 
-    public void delete(String id) {
+    public void delete(Integer id) {
         customersDao.openCurrentSessionwithTransaction();
         Customers customers = customersDao.findById(id);
         customersDao.delete(customers);

@@ -25,8 +25,8 @@ public class Car {
     @Column(name = "cost")
     private BigDecimal cost;
 
-//    @OneToOne(mappedBy = "car", fetch = FetchType.EAGER)
-//    private Rental rental;
+    @OneToOne(mappedBy = "car", fetch = FetchType.EAGER, cascade = {CascadeType.ALL}, orphanRemoval = true)
+    private Rental rental;
 
     public Car() {
     }
@@ -38,6 +38,10 @@ public class Car {
         this.registrationNumber = registrationNumber;
         this.condition = condition;
         this.cost = cost;
+    }
+
+    public Car(String brand, String model, String color, String registrationNumber, String condition, String cost) {
+
     }
 
     public Integer getCarId() {
@@ -52,8 +56,9 @@ public class Car {
         return brand;
     }
 
-    public void setBrand(String brand) {
+    public Car setBrand(String brand) {
         this.brand = brand;
+        return null;
     }
 
     public String getModel() {
@@ -117,5 +122,8 @@ public class Car {
 //        sb.append(", rental=").append(rental);
         sb.append('}');
         return sb.toString();
+    }
+
+    public void setCondition(String s) {
     }
 }

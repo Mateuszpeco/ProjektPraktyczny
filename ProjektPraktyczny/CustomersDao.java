@@ -75,7 +75,7 @@ public class CustomersDao {
         getCurrentSession().update(entity);
     }
 
-    public Customers findById(String id) {
+    public Customers findById(Integer id) {
         Customers customers = (Customers) getCurrentSession().get(Customers.class, id);
         return customers;
     }

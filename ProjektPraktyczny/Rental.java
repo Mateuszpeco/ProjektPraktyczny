@@ -16,10 +16,10 @@ public class Rental {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column
     private Integer rentalId;
-//    @Column(name = "car_id")
-//    private Integer idCar;
-//    @Column(name = "customer_id")
-//    private Integer idCustomer;
+    @Column(name = "car_id")
+    private Integer idCar;
+    @Column(name = "customer_id")
+    private Integer idCustomer;
     @Column(name = "loan_date")
     private LocalDate loanDate;
     @Column(name = "return_date")
@@ -31,8 +31,10 @@ public class Rental {
     @Column(name = "penalty_amount")
     private BigDecimal penaltyAmount;
 
-
-    @OneToOne(fetch = FetchType.EAGER, cascade = {CascadeType.ALL})
+//    @OneToOne(mappedBy = "rental", fetch = FetchType.LAZY, cascade = {CascadeType.ALL}, orphanRemoval = true)
+//    @JoinColumn(name = "carId")
+//    private Car car;
+    @OneToOne(fetch = FetchType.EAGER, cascade = {CascadeType.ALL}, orphanRemoval = true)
     @JoinColumn(name = "carId")
     private Car car;
 
@@ -43,6 +45,11 @@ public class Rental {
     public Rental(Car car, Customers customers) {
         this.car = car;
         this.customer = customers;
+    }
+
+    public Rental(Integer idCar, Integer idCustomer) {
+        this.idCar = idCar;
+        this.idCustomer = idCustomer;
     }
 
     public Rental() {
@@ -56,21 +63,21 @@ public class Rental {
         this.rentalId = rental_id;
     }
 
-//    public Integer getIdCar() {
-//        return idCar;
-//    }
-//
-//    public void setIdCar(Integer idCar) {
-//        this.idCar = idCar;
-//    }
-//
-//    public Integer getIdCustomer() {
-//        return idCustomer;
-//    }
-//
-//    public void setIdCustomer(Integer idCustomer) {
-//        this.idCustomer = idCustomer;
-//    }
+    public Integer getIdCar() {
+        return idCar;
+    }
+
+    public void setIdCar(Integer idCar) {
+        this.idCar = idCar;
+    }
+
+    public Integer getIdCustomer() {
+        return idCustomer;
+    }
+
+    public void setIdCustomer(Integer idCustomer) {
+        this.idCustomer = idCustomer;
+    }
 
     public LocalDate getLoanDate() {
         return loanDate;
@@ -124,23 +131,23 @@ public class Rental {
         return customer;
     }
 
-    public void setCustomer(Customers customer) {
-        this.customer = customer;
+    public void setCustomer(Customers customers) {
+        this.customer = customers;
     }
 
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder("Rental{");
         sb.append("rental_id=").append(rentalId);
-//        sb.append(", idCar=").append(idCar);
-//        sb.append(", idCustomer=").append(idCustomer);
+        sb.append(", idCar=").append(idCar);
+        sb.append(", idCustomer=").append(idCustomer);
         sb.append(", loanDate=").append(loanDate);
         sb.append(", returnDate=").append(returnDate);
         sb.append(", daysAfterDeadline=").append(daysAfterDeadline);
         sb.append(", penalty='").append(penalty).append('\'');
         sb.append(", penaltyAmount=").append(penaltyAmount);
-        sb.append(", car=").append(car);
-        sb.append(", customer=").append(customer);
+//        sb.append(", car=").append(car);
+//        sb.append(", customer=").append(customer);
         sb.append('}');
         return sb.toString();
     }

@@ -20,14 +20,14 @@ public class RentalService {
         rentalDao.closeCurrentSessionwithTransaction();
     }
 
-    public Rental findById(String id) {
+    public Rental findById(Integer id) {
         rentalDao.openCurrentSession();
         Rental rental = rentalDao.findById(id);
         rentalDao.closeCurrentSession();
         return rental;
     }
 
-    public void delete(String id) {
+    public void delete(Integer id) {
         rentalDao.openCurrentSessionwithTransaction();
         Rental rental = rentalDao.findById(id);
         rentalDao.delete(rental);
@@ -50,4 +50,5 @@ public class RentalService {
     public RentalDao rentalDao() {
         return rentalDao;
     }
+
 }

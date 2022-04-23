@@ -7,7 +7,6 @@ import org.hibernate.boot.Metadata;
 import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
-import org.hibernate.cfg.Configuration;
 
 import java.util.List;
 
@@ -76,7 +75,12 @@ public class RentalDao implements RentalDaoInterface<Rental, String> {
         getCurrentSession().update(entity);
     }
 
+    @Override
     public Rental findById(String id) {
+        return null;
+    }
+
+    public Rental findById(int id) {
         Rental rental = (Rental) getCurrentSession().get(Rental.class, id);
         return rental;
     }

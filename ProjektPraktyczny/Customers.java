@@ -17,7 +17,7 @@ public class Customers {
     @Column(name = "last_name")
     private String lastName;
 
-//    @OneToOne(fetch = FetchType.EAGER, mappedBy = "customers", orphanRemoval = true)
+//    @OneToOne(fetch = FetchType.LAZY, mappedBy = "customers", cascade = {CascadeType.ALL}, orphanRemoval = true)
 //    private Set<Rental> rentals = new HashSet<>();
 
     public Customers() {

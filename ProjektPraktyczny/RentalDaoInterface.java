@@ -9,7 +9,7 @@ public interface RentalDaoInterface <T, Id extends Serializable> {
 
     void update(T entity);
 
-    T findById(Id id);
+    T findById(String id);
 
     void delete(T entity);
 

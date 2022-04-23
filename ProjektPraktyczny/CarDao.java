@@ -75,7 +75,7 @@ public class CarDao {
         getCurrentSession().update(entity);
     }
 
-    public Car findById(String id) {
+    public Car findById(Integer id) {
         Car car = (Car) getCurrentSession().get(Car.class, id);
         return car;
     }
